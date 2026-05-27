@@ -13,12 +13,12 @@ function ReverseIcon({ color, size }) {
       viewBox="0 0 100 100"
     >
       {/* Arrow 1 — lower half, pointing ↗ */}
-      <g transform="translate(50,67) rotate(-45)">
+      <g transform="translate(50,72) rotate(-45)">
         <path d={arrow} fill={color} />
       </g>
 
       {/* Arrow 2 — upper half, pointing ↙ */}
-      <g transform="translate(50,33) rotate(135)">
+      <g transform="translate(50,28) rotate(135)">
         <path d={arrow} fill={color} />
       </g>
     </svg>
