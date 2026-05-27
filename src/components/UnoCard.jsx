@@ -65,6 +65,7 @@ export function CardShell({ color, cornerContent, ovalContent }) {
           height: '2.3in',
           backgroundColor: 'white',
           borderRadius: '50%',
+          overflow: 'hidden',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

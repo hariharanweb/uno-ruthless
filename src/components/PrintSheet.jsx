@@ -7,6 +7,7 @@ import { WildDrawTwentyFourCard } from './WildDrawTwentyFourCard';
 import { ColorChangeCard } from './ColorChangeCard';
 import { ShuffleHandsCard } from './ShuffleHandsCard';
 import { SwapHandsCard } from './SwapHandsCard';
+import { WildBlankCard } from './WildBlankCard';
 
 const COLORS = ['red', 'blue', 'green', 'yellow'];
 
@@ -38,7 +39,10 @@ function buildDeck() {
   cards.push({ type: 'shufflehands' });
   cards.push({ type: 'swaphands' });
   cards.push({ type: 'swaphands' });
-  return cards; // 110 cards total
+  cards.push({ type: 'wildblank' });
+  cards.push({ type: 'wildblank' });
+  cards.push({ type: 'wildblank' });
+  return cards; // 113 cards total
 }
 
 const DECK = buildDeck();
@@ -51,6 +55,7 @@ function renderCard(card, i) {
   if (card.type === 'colorchange')  return <ColorChangeCard        key={i} />;
   if (card.type === 'shufflehands') return <ShuffleHandsCard       key={i} />;
   if (card.type === 'swaphands')    return <SwapHandsCard          key={i} />;
+  if (card.type === 'wildblank')    return <WildBlankCard          key={i} />;
   return <UnoCard key={i} color={card.color} number={card.number} />;
 }
 
