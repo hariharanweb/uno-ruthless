@@ -11,11 +11,6 @@
 }
 
 /* ── Print layout ── */
-@page {
-  size: A4 portrait;
-  margin: 0.3cm;
-}
-
 @media print {
   body {
     background: white;

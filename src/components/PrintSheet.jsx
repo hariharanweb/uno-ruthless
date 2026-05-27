@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UnoCard } from './UnoCard';
 import { SkipCard } from './SkipCard';
 import { ReverseCard } from './ReverseCard';
@@ -60,6 +60,19 @@ function renderCard(card, i) {
 }
 
 export function PrintSheet() {
+  const [paperSize, setPaperSize] = useState('A4');
+
+  const handlePrint = () => {
+    let style = document.getElementById('dynamic-page-size');
+    if (!style) {
+      style = document.createElement('style');
+      style.id = 'dynamic-page-size';
+      document.head.appendChild(style);
+    }
+    style.textContent = `@page { size: ${paperSize} portrait; margin: 0.3cm; }`;
+    window.print();
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Screen header */}
@@ -68,12 +81,22 @@ export function PrintSheet() {
         <p className="text-gray-500 text-sm">
           {DECK.length} cards · 4 colors · numbers 0–9 · Skip · Reverse · +12 · Wild +24 · Color Change · Shuffle · Swap
         </p>
-        <button
-          onClick={() => window.print()}
-          className="mt-3 px-6 py-2 bg-gray-800 text-white rounded-lg font-bold hover:bg-gray-700 transition-colors"
-        >
-          Print
-        </button>
+        <div className="mt-3 flex items-center justify-center gap-3">
+          <select
+            value={paperSize}
+            onChange={e => setPaperSize(e.target.value)}
+            className="px-3 py-2 border border-gray-300 rounded-lg text-gray-700 font-semibold bg-white"
+          >
+            <option value="A4">A4</option>
+            <option value="A3">A3</option>
+          </select>
+          <button
+            onClick={handlePrint}
+            className="px-6 py-2 bg-gray-800 text-white rounded-lg font-bold hover:bg-gray-700 transition-colors"
+          >
+            Print
+          </button>
+        </div>
       </div>
 
       {/* Card grid */}
