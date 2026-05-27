@@ -1,45 +1,26 @@
 import React from 'react';
 import { CardShell, COLOR_MAP } from './UnoCard';
 
-// Two parallel arcs with arrowheads, pointing in opposite directions
+// Two thick arrows pointing away from each other (↗ and ↙),
+// overlapping in the center like the real UNO reverse card.
 function ReverseIcon({ color, size }) {
-  const sw = 9;   // stroke width
-  const asw = 8;  // arrowhead stroke width
+  // Arrow shape pointing right (→): shaft + filled arrowhead
+  const arrow = "M -32,-7 L 10,-7 L 10,-20 L 50,0 L 10,20 L 10,7 L -32,7 Z";
 
   return (
     <svg
       style={{ width: size, height: size, display: 'block' }}
       viewBox="0 0 100 100"
-      fill="none"
-      strokeLinecap="round"
     >
-      {/* Top arc: left → right (curves upward) */}
-      <path
-        d="M 12,46 C 20,16 80,16 88,46"
-        stroke={color}
-        strokeWidth={sw}
-      />
-      {/* Arrowhead at right end of top arc, pointing down-right */}
-      <path
-        d="M 76,33 L 88,46 L 78,58"
-        stroke={color}
-        strokeWidth={asw}
-        strokeLinejoin="round"
-      />
+      {/* Arrow 1 — lower half, pointing ↗ */}
+      <g transform="translate(50,67) rotate(-45)">
+        <path d={arrow} fill={color} />
+      </g>
 
-      {/* Bottom arc: right → left (curves downward) */}
-      <path
-        d="M 88,54 C 80,84 20,84 12,54"
-        stroke={color}
-        strokeWidth={sw}
-      />
-      {/* Arrowhead at left end of bottom arc, pointing up-left */}
-      <path
-        d="M 24,67 L 12,54 L 22,42"
-        stroke={color}
-        strokeWidth={asw}
-        strokeLinejoin="round"
-      />
+      {/* Arrow 2 — upper half, pointing ↙ */}
+      <g transform="translate(50,33) rotate(135)">
+        <path d={arrow} fill={color} />
+      </g>
     </svg>
   );
 }
