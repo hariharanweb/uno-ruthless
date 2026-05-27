@@ -5,6 +5,7 @@ export const COLOR_MAP = {
   blue:   { bg: '#2471A3', frame: 'rgba(255,255,255,0.55)', text: '#2471A3' },
   green:  { bg: '#1E8449', frame: 'rgba(255,255,255,0.55)', text: '#1E8449' },
   yellow: { bg: '#D4AC0D', frame: 'rgba(255,255,255,0.55)', text: '#D4AC0D' },
+  wild:   { bg: '#1C1C1E', frame: 'rgba(255,255,255,0.22)', text: '#FFFFFF' },
 };
 
 // Shared card shell — oval + frame + two corners.

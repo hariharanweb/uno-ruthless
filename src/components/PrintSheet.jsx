@@ -3,6 +3,7 @@ import { UnoCard } from './UnoCard';
 import { SkipCard } from './SkipCard';
 import { ReverseCard } from './ReverseCard';
 import { DrawTwelveCard } from './DrawTwelveCard';
+import { WildDrawTwentyFourCard } from './WildDrawTwentyFourCard';
 
 const COLORS = ['red', 'blue', 'green', 'yellow'];
 
@@ -23,7 +24,11 @@ function buildDeck() {
     cards.push({ type: 'draw12', color });
     cards.push({ type: 'draw12', color });
   }
-  return cards; // 100 cards total
+  // 3× Wild +24 (colorless)
+  cards.push({ type: 'wild24' });
+  cards.push({ type: 'wild24' });
+  cards.push({ type: 'wild24' });
+  return cards; // 103 cards total
 }
 
 const DECK = buildDeck();
@@ -31,7 +36,8 @@ const DECK = buildDeck();
 function renderCard(card, i) {
   if (card.type === 'skip')    return <SkipCard       key={i} color={card.color} />;
   if (card.type === 'reverse') return <ReverseCard    key={i} color={card.color} />;
-  if (card.type === 'draw12')  return <DrawTwelveCard key={i} color={card.color} />;
+  if (card.type === 'draw12')  return <DrawTwelveCard          key={i} color={card.color} />;
+  if (card.type === 'wild24')  return <WildDrawTwentyFourCard  key={i} />;
   return <UnoCard key={i} color={card.color} number={card.number} />;
 }
 
@@ -42,7 +48,7 @@ export function PrintSheet() {
       <div className="no-print mb-6 text-center">
         <h1 className="text-3xl font-black text-gray-800 mb-1">UNO Ruthless — Print Sheet</h1>
         <p className="text-gray-500 text-sm">
-          {DECK.length} cards · 4 colors · numbers 0–9 · Skip · Reverse · +12
+          {DECK.length} cards · 4 colors · numbers 0–9 · Skip · Reverse · +12 · Wild +24
         </p>
         <button
           onClick={() => window.print()}
